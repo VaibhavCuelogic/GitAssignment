@@ -1,0 +1,107 @@
+Questions:
+Git Assignment 
+Task1 - Branching Strategy: 
+You got a new project, where you have to setup 3 environments as Development, Staging and Production. 
+1.1 Write down the GIT commands sequentially 
+Task2 - Code Review: 
+2.1 Task is to print respective environments on index.html (Ex: index.html file on development environment should display “Development Environment”, file on staging environment should display “Staging Environment” likewise) 
+2.2 Once you are done with above task, create a pull request to your mentor and merge it once you got approval on PR. 
+2.3 Now, client wants to see staging environment name in Red color. 
+2.4 Push all changes to respective environments. 
+Task3 - New feature Request: 
+3.1 On Dev environment client wants to see company name in Blue color (ex: Cuelogic) 
+3.2 Once done, raise PR and post approval, push changes to staging environment so that client can review, wait for client’s approval on this change. 
+Task 4 - Hotfix: 
+4.1 As soon as you completed with task 3, client comes up with quick change that he wants to see environment name in Green instead of Red on Production and he wants it on urgent priority, however he has not given approval on task 3 yet which is on staging. 
+Task 5 - Rollback: 
+5.1 Rollback task 3 to previous stage (task 2) so that environment name color will be red again. Don’t change color manually it should actually point to particular git commit where color was red. 
+
+
+
+Assignment 1:
+Sudo git checkout -b <New Branch Name> <Copy Data Branch Name>
+Production: Sudo git checkout -b Production master
+Staging:    Sudo git checkout -b Staging master
+Development:Sudo git checkout -b Development master
+
+
+Assignment 2:
+
+2.1 As we have Created Three different branches from the above enviroment below are the step to add file 
+	A Production Enviroment:
+	1 Create File vi index.html -> Add Html Code -> :wq
+	2 sudo git commit -am "Added and index file into the production enviroment"
+	3 sudo git push origin Production
+ 
+	B Staging Enviroment:
+	1 Create File vi index.html -> Add Html Code -> :wq
+	2 sudo git commit -am "Added and index file into the Staging enviroment"
+	3 sudo git push origin Staging
+
+	C Development Enviroment:
+	1 Create File vi index.html -> Add Html Code -> :wq
+	2 sudo git commit -am "Added and index file into the Development enviroment"
+	3 sudo git push origin Development
+
+2.2  Created a Pull Request using github UI and it was telling to merge manually following are the steps
+	a. sudo git checkout production
+	b. sudo git merge Staging
+	c. Conflict Occured and Solved Manually 
+	d. sudo git commit -am "Resolved and Merge Conficts"
+	e. sudo git push origin production
+
+2.3   According to the client new requirement
+	a. Check out Staging Branch ->  sudo git checkout production
+	b. Do needfull changes for the development 
+	c. sudo git commit -am "Added new client changes as suggested on discussion"
+	d. sudo git push origin Staging
+
+2.4  Push all the changes done in respective branch
+	a. Check out Staging Branch ->  sudo git checkout production
+	b. Do needfull changes. 
+	c. sudo git commit -am "Added new client changes as suggested on discussion"
+	d. sudo git push origin Staging
+
+Assignment 3
+
+3.1 Client Requirment Change to see new Color on Development Enviroment
+	a. Checkout Development Enviroment -> sudo git checkout Development
+	b. Do needfull changes for the index.html 
+	c. sudo git commit -am "Added new client changes as suggested on discussion"
+	d. sudo git push origin Development
+
+3.2 Created a Pull Request to merge all changes done in the development to Staging
+	a. Github -> Create Pull Request
+	b. Base =  Staging and Comapre = Development
+	c. Resolve Conflict Using Command Line
+		a. sudo git checkout Staging
+		b. sudo git merge Development
+		c. Conflict Occured and Solved Manually 
+		d. sudo git commit -am "Resolved and Merge Conficts"
+		e. sudo git push origin Staging
+
+Assignment 4
+
+4.1 Hotfix on Production Enviroment
+	a. sudo git checkout -b hotfix Production
+	b. Do the Changes into the file 
+	c. sudo git commit -am "Changes done on the higesht priority"
+	d. sudo git push origin hotfix
+	e. sudo git checkout Production
+	f. sudo git merge hotfix
+	g. sudo git commit -am "Merging changes done in the hotfix to production"
+	h. sudo git push origin Production
+
+Assignment 5
+
+	a Let says the Commit id of Task 2 is C2E4df
+
+	b sudo git checkout C2E4df // If you have done some modification and not comitted then it will get discard
+		or
+	c sudo git reflog
+	d sudo git checkout HEAD@{Number}
+			or
+	a. git stash // To will Keep all you local modification
+	b. git reset --hard C2E4df
+	c. git stash pop // Again Back to local Modification
+
