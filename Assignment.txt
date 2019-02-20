@@ -1,0 +1,9 @@
+Assignment 1:
+
+Production: Sudo git checkout -b Production master
+Staging:    Sudo git checkout -b Staging master
+Development:Sudo git checkout -b Development master
+
+
+Assignment 2:
+
